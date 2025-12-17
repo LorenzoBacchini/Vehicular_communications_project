@@ -16,18 +16,33 @@ class Vehicle:
     def set_default_config(self):    
         self.id = uuid.uuid4()
 
+        # length of the vehicle
         self.l = 4
+        # safety distance from the vehicle in front
         self.s0 = 4
+        # desired time headway (s)
         self.T = 1
+        # maximum velocity (m/s)        
         self.v_max = 16.6
+        # maximum acceleration (m/s^2)
         self.a_max = 1.44
+        # comfortable deceleration (m/s^2)
         self.b_max = 4.61
 
+        # path as list of segment indices
         self.path = []
+        '''
+         Index of the current road in the path list.
+         For example, if path = [0, 3, 5] and current_road_index = 1,
+         the vehicle is currently on road 3 and will go to road 5 next.
+        '''
         self.current_road_index = 0
 
+        # dynamic states
         self.x = 0
+        # velocity
         self.v = 0
+        # acceleration
         self.a = 0
         self.stopped = False
 
