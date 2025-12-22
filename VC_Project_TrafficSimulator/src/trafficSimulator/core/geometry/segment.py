@@ -7,9 +7,12 @@ from math import sqrt
 from scipy.integrate import quad
 
 class Segment(ABC):
-    def __init__(self, points):
+    def __init__(self, points, material=None, speed_limit=None):
         self.points = points
         self.vehicles = deque()
+        self._material = self.set_material(material)
+        self._color
+        self.speed_limit = speed_limit
 
         self.set_functions()
         
@@ -39,6 +42,28 @@ class Segment(ABC):
 
     def remove_vehicle(self, veh):
         self.vehicles.remove(veh.id)
+
+    def set_material(self, value):
+        # Allowed materials and associated colors
+        material_to_color = {
+            "asphalt": (50, 50, 50, 255),
+            "concrete": (200, 200, 200, 255),
+            "gravel": (139, 69, 19, 255)
+        }
+        if value is None:
+            value = "asphalt"  # Default material
+        
+        if value not in material_to_color:
+            raise ValueError(f"Material must be one of {set(material_to_color.keys())}")
+
+        self._material = value
+        self._color = material_to_color[value]
+    
+    def material(self):
+        return self._material
+    
+    def color(self):
+        return self._color
 
     #@abstractmethod
     def compute_x(self, t):

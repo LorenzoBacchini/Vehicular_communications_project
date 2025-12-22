@@ -31,8 +31,8 @@ class Simulation:
         veh = Vehicle(kwargs)
         self.add_vehicle(veh)
 
-    def create_segment(self, *args):
-        seg = Segment(args)
+    def create_segment(self, points, material=None, speed_limit=None):
+        seg = Segment(points, material=material, speed_limit=speed_limit)
         self.add_segment(seg)
 
     def create_quadratic_bezier_curve(self, start, control, end):
