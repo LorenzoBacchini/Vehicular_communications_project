@@ -47,6 +47,9 @@ class Simulation:
         gen = VehicleGenerator(kwargs)
         self.add_vehicle_generator(gen)
 
+    def get_segment_index(self, segment):
+        return self.segments.index(segment)
+
     def run(self, steps):
         for _ in range(steps):
             self.update()
