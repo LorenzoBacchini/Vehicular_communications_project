@@ -35,12 +35,15 @@ sim.create_quadratic_bezier_curve((intersection_size/2, -lane_space/2), (-lane_s
 sim.create_quadratic_bezier_curve((-lane_space/2, -intersection_size/2), (-lane_space/2, lane_space/2), (intersection_size/2, lane_space/2))
 sim.create_quadratic_bezier_curve((-intersection_size/2, lane_space/2), (lane_space/2, lane_space/2), (lane_space/2, -intersection_size/2))
 
+
 vg = VehicleGenerator({
     'vehicles': [
-        (1, {'v': 16.6, 'path': [sim.get_segment_index(south_in), 12, 5]}),
-        (1, {'v': 15.0, 'v_max': 15.7, 'path': [0, 8, 6]})
+        (1, "Car", {'path': [sim.get_segment_index(south_in), 12, 5]}),
+        (1, "Truck", {'path': [0, 16, 7]}),
+        (1, "Motorbike", {'path': [0, 8, 6]}),
     ]
 })
+
 sim.add_vehicle_generator(vg)
 
 win = Window(sim)
