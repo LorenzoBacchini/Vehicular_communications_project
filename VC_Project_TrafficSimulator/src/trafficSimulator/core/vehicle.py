@@ -18,6 +18,8 @@ class Vehicle:
 
         # length of the vehicle
         self.l = 4
+        # width of the vehicle
+        self.w = 1.76
         # safety distance from the vehicle in front
         self.s0 = 4
         # desired time headway (s)
