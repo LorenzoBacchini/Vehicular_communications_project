@@ -277,14 +277,37 @@ class Window:
                 position = segment.get_point(progress)
                 heading = segment.get_heading(progress)
 
+                L = vehicle.l
+                W = vehicle.w
+                HALF_W = W / 2
+
+                edges = [
+                    ((0, -HALF_W), (L, -HALF_W)),  # bottom
+                    ((0,  HALF_W), (L,  HALF_W)),  # top
+                    ((0, -HALF_W), (0,  HALF_W)),  # left
+                    ((L, -HALF_W), (L,  HALF_W)),  # right
+                ]
+
                 node = dpg.add_draw_node(parent="Canvas")
+
+                # --- Vehicle body (blue) ---
                 dpg.draw_line(
                     (0, 0),
-                    (vehicle.l, 0),
-                    thickness=1.76*self.zoom,
+                    (L, 0),
+                    thickness= HALF_W * 2 * self.zoom,
                     color=(0, 0, 255),
                     parent=node
                 )
+
+                if vehicle.v > segment.speed_limit:
+                    for p0, p1 in edges:
+                        dpg.draw_line(
+                            p0,
+                            p1,
+                            thickness=0.4 * self.zoom,
+                            color=(255, 0, 0),
+                            parent=node
+                        )
 
                 translate = dpg.create_translation_matrix(position)
                 rotate = dpg.create_rotation_matrix(heading, [0, 0, 1])
