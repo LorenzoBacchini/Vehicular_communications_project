@@ -16,6 +16,8 @@ class Vehicle:
     def set_default_config(self):    
         self.id = uuid.uuid4()
 
+        # visual propertie
+        self.color = (0, 0, 255)
         # length of the vehicle
         self.l = 4
         # width of the vehicle
