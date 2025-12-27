@@ -1,5 +1,16 @@
 from .vehicle import Vehicle
+from trafficSimulator.core.vehicles.car import Car
+from trafficSimulator.core.vehicles.truck import Truck
+from trafficSimulator.core.vehicles.motorbike import Motorbike
+
 from numpy.random import randint
+
+VEHICLE_CLASSES = {
+    "Vehicle": Vehicle,
+    "Car": Car,
+    "Truck": Truck,
+    "Motorbike": Motorbike,
+}
 
 class VehicleGenerator:
     def __init__(self, config={}):
@@ -28,10 +39,10 @@ class VehicleGenerator:
         """Returns a random vehicle from self.vehicles with random proportions"""
         total = sum(pair[0] for pair in self.vehicles)
         r = randint(1, total+1)
-        for (weight, config) in self.vehicles:
+        for (weight, class_name, config) in self.vehicles:
             r -= weight
             if r <= 0:
-                return Vehicle(config)
+                return VEHICLE_CLASSES[class_name](config)
 
     def update(self, simulation):
         """Add vehicles"""
