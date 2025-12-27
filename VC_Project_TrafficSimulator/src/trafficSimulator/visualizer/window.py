@@ -279,6 +279,7 @@ class Window:
 
                 L = vehicle.l
                 W = vehicle.w
+                COLOR = vehicle.color
                 HALF_W = W / 2
 
                 edges = [
@@ -295,7 +296,7 @@ class Window:
                     (0, 0),
                     (L, 0),
                     thickness= HALF_W * 2 * self.zoom,
-                    color=(0, 0, 255),
+                    color=COLOR,
                     parent=node
                 )
 
