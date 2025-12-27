@@ -8,7 +8,7 @@ length = 100
 
 # Order: SOUTH, EAST, NORTH, WEST
 # Intersection in
-south_in = Segment(points=((lane_space/2, length+intersection_size/2), (lane_space/2, intersection_size/2)), material="asphalt", speed_limit=50)
+south_in = Segment(points=((lane_space/2, length+intersection_size/2), (lane_space/2, intersection_size/2)), material="asphalt", speed_limit=15.5)
 sim.add_segment(south_in)
 #sim.create_segment(points=((lane_space/2, length+intersection_size/2), (lane_space/2, intersection_size/2)), material="concrete", speed_limit=50)
 sim.create_segment(points=((length+intersection_size/2, -lane_space/2), (intersection_size/2, -lane_space/2)))
@@ -38,7 +38,7 @@ sim.create_quadratic_bezier_curve((-intersection_size/2, lane_space/2), (lane_sp
 vg = VehicleGenerator({
     'vehicles': [
         (1, {'v': 16.6, 'path': [sim.get_segment_index(south_in), 12, 5]}),
-        (1, {'v': 15.0, 'path': [0, 8, 6]})
+        (1, {'v': 15.0, 'v_max': 15.7, 'path': [0, 8, 6]})
     ]
 })
 sim.add_vehicle_generator(vg)
