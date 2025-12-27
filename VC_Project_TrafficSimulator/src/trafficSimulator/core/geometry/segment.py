@@ -10,9 +10,8 @@ class Segment(ABC):
     def __init__(self, points, material=None, speed_limit=None):
         self.points = points
         self.vehicles = deque()
-        self._material = self.set_material(material)
-        self._color
-        self.speed_limit = speed_limit
+        self.set_material(material)
+        self.set_speed_limit(speed_limit)
 
         self.set_functions()
         
@@ -58,6 +57,11 @@ class Segment(ABC):
 
         self._material = value
         self._color = material_to_color[value]
+    
+    def set_speed_limit(self, value):
+        if value is None:
+            value = 16.6  # Default speed limit in m/s (60 km/h)
+        self.speed_limit = value
     
     def material(self):
         return self._material
