@@ -32,6 +32,16 @@ class Vehicle:
         self.a_max = 1.44
         # comfortable deceleration (m/s^2)
         self.b_max = 4.61
+        # engine type: "combustion", "electric", "hybrid"
+        self.engine_type = "combustion"
+        # engine power (kW)
+        self.engine_power = 100
+        # fuel consumption (l/100km)
+        self.fuel_consumption = 6.5
+        # co2 emissions (g/km)
+        self.CO2_emissions = 180
+        # rain detection sensor
+        self.rain_sensor = False
 
         # path as list of segment indices
         self.path = []
