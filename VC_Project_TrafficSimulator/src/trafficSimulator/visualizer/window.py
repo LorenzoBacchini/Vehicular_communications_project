@@ -5,7 +5,7 @@ class Window:
     def __init__(self, simulation):
         self.simulation = simulation
 
-        self.zoom = 7
+        self.zoom = 2
         self.offset = (0, 0)
         self.speed = 1
 
