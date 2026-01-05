@@ -7,12 +7,12 @@ from math import sqrt
 from scipy.integrate import quad
 
 class Segment(ABC):
-    def __init__(self, points, material=None, speed_limit=None):
+    def __init__(self, points, material=None, speed_limit=None, identifier=None):
         self.points = points
         self.vehicles = deque()
         self.set_material(material)
         self.set_speed_limit(speed_limit)
-
+        self.identifier = identifier
         self.set_functions()
         
 
