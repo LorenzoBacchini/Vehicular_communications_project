@@ -50,6 +50,12 @@ class Simulation:
     def get_segment_index(self, segment):
         return self.segments.index(segment)
 
+    def get_segment_index_by_identifier(self, identifier):
+        for i, segment in enumerate(self.segments):
+            if segment.identifier == identifier:
+                return i
+        return -1
+
     def run(self, steps):
         for _ in range(steps):
             self.update()
