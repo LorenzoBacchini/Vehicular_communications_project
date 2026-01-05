@@ -1,0 +1,148 @@
+{
+    "vehicle_rate": 10,
+    "vehicles": [
+        {
+            "weight": 1,
+            "type": "Truck",
+            "additional_properties": {
+                "v": 10.0
+            },
+            "path": [
+                "enter_road_1_curve",
+                "road_one_1",
+                "road_one_2",
+                "road_one_3",
+                "nine_one_curve",
+                "road_nine_1",
+                "road_nine_2",
+                "road_nine_3",
+                "nine_eight_curve",
+                "road_eight_1",
+                "road_eight_2",
+                "road_eight_3",
+                "eight_seven_curve",
+                "road_seven_1",
+                "road_seven_2",
+                "road_seven_3",
+                "seven_six_curve",
+                "road_six",
+                "six_five_curve",
+                "road_five_1",
+                "road_five_2",
+                "five_four_curve",
+                "road_four_1",
+                "road_four_2",
+                "road_four_3",
+                "four_three_curve",
+                "road_three_1",
+                "road_three_2",
+                "exit_road_3_curve"
+            ] 
+        },
+        {
+            "weight": 1,
+            "type": "Car",
+            "path": [
+                "enter_road_7_curve",
+                "road_seven_1",
+                "to_2_south_curve",
+                "i_2_1_south",
+                "straight_2_south",
+                "i_2_2_south",
+                "bridge_2_south",
+                "i_2_3_south",
+                "from_2_south_curve",
+                "road_one_3",
+                "exit_road_1_curve"
+            ] 
+        },
+        {
+            "weight": 1,
+            "type": "Motorbike",
+            "path": [
+                "enter_road_5_curve",
+                "five_four_curve",
+                "road_four_1",
+                "to_3_south_curve",
+                "i_3_1_south",
+                "left_5_curve",
+                "i_4_2_north",
+                "from_4_north_curve",
+                "road_nine_3",
+                "exit_road_9_curve"
+            ] 
+        },
+        {
+            "weight": 1,
+            "type": "Car",
+            "path": [
+                "enter_road_1_curve",
+                "road_one_1",
+                "road_one_2",
+                "road_one_3",
+                "nine_one_curve",
+                "road_nine_1",
+                "to_4_south_curve",
+                "i_4_1_south",
+                "straight_4_south",
+                "i_4_2_south",
+                "from_4_south_curve",
+                "road_three_2",
+                "three_two_curve",
+                "road_two",
+                "two_one_curve",
+                "road_one_1",
+                "to_2_north_curve",
+                "i_2_1_north",
+                "bridge_2_north",
+                "i_2_2_north",
+                "straight_2_north",
+                "i_2_3_north",
+                "from_2_north_curve",
+                "road_seven_3",
+                "seven_six_curve",
+                "road_six",
+                "exit_road_6_curve"
+           ] 
+        },
+        {
+            "weight": 1,
+            "type": "Motorbike",
+            "additional_properties": {
+                "v_max": 20.0
+            },
+            "path": [
+                "enter_road_7_curve",
+                "road_seven_1",
+                "to_2_south_curve",
+                "i_2_1_south",
+                "right_2_curve",
+                "i_1_2_south",
+                "from_1_south_curve",
+                "road_five_2",
+                "five_four_curve",
+                "road_four_1",
+                "road_four_2",
+                "road_four_3",
+                "four_three_curve",
+                "to_4_north_curve",
+                "i_4_1_north",
+                "straight_4_north",
+                "i_4_2_north",
+                "from_4_north_curve",
+                "road_nine_3",
+                "nine_eight_curve",
+                "road_eight_1",
+                "to_1_south_curve",
+                "i_1_1_south",
+                "left_1_curve",
+                "i_2_2_south",
+                "bridge_2_south",
+                "i_2_3_south",
+                "from_2_south_curve",
+                "road_one_3",
+                "exit_road_1_curve"
+            ] 
+        }
+    ]
+}
