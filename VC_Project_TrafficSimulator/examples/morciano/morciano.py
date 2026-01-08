@@ -1,7 +1,7 @@
 from trafficSimulator import *
 from trafficSimulator.core.vehicle_loader import load_vehicles
 
-sim = Simulation()
+sim = Simulation("VC_Project_TrafficSimulator/examples/morciano/log_morciano_crashes.txt")
 
 interurban_speed_limit = 25.0  # m/s (90 km/h)
 urban_speed_limit = 13.8  # m/s (50 km/h)
