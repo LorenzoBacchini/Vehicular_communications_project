@@ -69,6 +69,9 @@ class Window:
         
         dpg.add_draw_node(tag="OverlayCanvas", parent="MainWindow")
         dpg.add_draw_node(tag="Canvas", parent="MainWindow")
+        width, height, channels, data = dpg.load_image("VC_Project_TrafficSimulator/src/trafficSimulator/visualizer/crash.png")
+        with dpg.texture_registry(show=True):
+            dpg.add_static_texture(width=width, height=height, default_value=data, tag="crash_texture")
 
         with dpg.window(
             tag="ControlsWindow",
@@ -273,9 +276,10 @@ class Window:
             for vehicle_id in segment.vehicles:
                 vehicle = self.simulation.vehicles[vehicle_id]
                 progress = vehicle.x / segment.get_length()
-
-                position = segment.get_point(progress)
-                heading = segment.get_heading(progress)
+                clamp_progress = max(0, min(1, progress)) # Clamp to [0, 1] to avoid errors
+                
+                position = segment.get_point(clamp_progress)
+                heading = segment.get_heading(clamp_progress)
 
                 L = vehicle.l
                 W = vehicle.w
@@ -283,18 +287,18 @@ class Window:
                 HALF_W = W / 2
 
                 edges = [
-                    ((0, -HALF_W), (L, -HALF_W)),  # bottom
-                    ((0,  HALF_W), (L,  HALF_W)),  # top
-                    ((0, -HALF_W), (0,  HALF_W)),  # left
-                    ((L, -HALF_W), (L,  HALF_W)),  # right
+                    ((-L/2, -HALF_W), (L/2, -HALF_W)),  # bottom
+                    ((-L/2,  HALF_W), (L/2,  HALF_W)),  # top
+                    ((-L/2, -HALF_W), (-L/2,  HALF_W)),  # left
+                    ((L/2, -HALF_W), (L/2,  HALF_W)),  # right
                 ]
 
                 node = dpg.add_draw_node(parent="Canvas")
 
                 # --- Vehicle body (blue) ---
                 dpg.draw_line(
-                    (0, 0),
-                    (L, 0),
+                    (-L/2, 0),
+                    (L/2, 0),
                     thickness= HALF_W * 2 * self.zoom,
                     color=COLOR,
                     parent=node
@@ -347,6 +351,11 @@ class Window:
         # Update simulation
         if self.is_running:
             self.simulation.run(self.speed)
+
+        if self.simulation.crash:
+            _, _, _, x, y = self.simulation.crashes[len(self.simulation.crashes)-1]
+            dpg.draw_image(texture_tag="crash_texture", pmin=(x-6, y-6), pmax=(x+6, y+6), parent="Canvas", tag="CrashImage")
+            self.stop()
 
     def show(self):
         dpg.show_viewport()
