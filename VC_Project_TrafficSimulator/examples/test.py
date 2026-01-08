@@ -1,6 +1,6 @@
 from trafficSimulator import *
 
-sim = Simulation()
+sim = Simulation("VC_Project_TrafficSimulator/examples/log_test.txt")
 
 lane_space = 3.5
 intersection_size = 12
@@ -37,10 +37,12 @@ sim.create_quadratic_bezier_curve((-intersection_size/2, lane_space/2), (lane_sp
 
 
 vg = VehicleGenerator({
+    'vehicle_rate': 20,
     'vehicles': [
-        (1, "Car", {'path': [sim.get_segment_index(south_in), 12, 5]}),
-        (1, "Truck", {'path': [0, 16, 7]}),
+        (1, "Car", {'path': [sim.get_segment_index(south_in), 16, 7]}),
+        (1, "Truck", {'path': [3, 19, 6]}),
         (1, "Motorbike", {'path': [0, 8, 6]}),
+        (2, "Truck", {'v': 12.5, 'path': [2, 18, 5]}),
     ]
 })
 
