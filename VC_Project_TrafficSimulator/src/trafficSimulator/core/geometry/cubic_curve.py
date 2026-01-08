@@ -23,6 +23,15 @@ class CubicCurve(Segment):
         normalized_path = self.find_normalized_path(CURVE_RESOLUTION)
         super().__init__(normalized_path, material=material, speed_limit=speed_limit, identifier=identifier)
 
+    def get_absolute_position(self, progress):
+        """
+        Compute the absolute position (x, y) of a vehicle in the global simulation.
+        The input `progress` is the distance along the cubic curve.
+        """
+        progress = progress/self.get_length() # Normalize progress to [0, 1]
+        clamp_progress = max(0, min(1, progress)) # Clamp to [0, 1]
+        return [self.compute_x(clamp_progress), self.compute_y(clamp_progress)] # Interpolated 2D point
+    
     def compute_x(self, t):
         return t**3*self.end[0] + 3*t**2*(1-t)*self.control_2[0] + 3*(1-t)**2*t*self.control_1[0] + (1-t)**3*self.start[0]
     

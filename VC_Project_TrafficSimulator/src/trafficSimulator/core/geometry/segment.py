@@ -68,6 +68,16 @@ class Segment(ABC):
     
     def color(self):
         return self._color
+    
+    def get_absolute_position(self, progress):
+        """
+        Compute the absolute position (x, y) of a vehicle in the global simulation.
+        The input `x` is the distance along the segment.
+        """
+        normalized_position = progress / self.get_length()  # Normalize x to [0, 1]
+        clamp_normalized_position = max(0, min(1, normalized_position))  # Clamp to [0, 1]
+        x, y = self.get_point(clamp_normalized_position)
+        return [float(x), float(y)]  # Interpolated 2D point
 
     #@abstractmethod
     def compute_x(self, t):
