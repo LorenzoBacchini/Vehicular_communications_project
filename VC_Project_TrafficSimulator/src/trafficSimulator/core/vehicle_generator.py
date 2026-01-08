@@ -52,7 +52,7 @@ class VehicleGenerator:
             # greater than vehicle_period; generate a vehicle
             segment = simulation.segments[self.upcoming_vehicle.path[0]]      
             if len(segment.vehicles) == 0\
-               or simulation.vehicles[segment.vehicles[-1]].x > self.upcoming_vehicle.s0 + self.upcoming_vehicle.l:
+               or simulation.vehicles[segment.vehicles[-1]].x > simulation.vehicles[segment.vehicles[-1]].l/2 + self.upcoming_vehicle.s0 + self.upcoming_vehicle.l/2:
                 # If there is space for the generated vehicle; add it
                 simulation.add_vehicle(self.upcoming_vehicle)
                 # Reset last_added_time and upcoming_vehicle
