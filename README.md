@@ -3,7 +3,7 @@ University project that aims to enhance an already existing traffic simulator.</
 ## Credits
 The original traffic simulator can be found in this [repo](https://github.com/BilHim/trafficSimulator.git).
 ## How to run the simulatior?
-To run the simulator you can simply run the files inside the examples folder.
+To run the simulator, you can simply run the files inside the examples folder from the root of the project, in order to avoid path resolution problems.
 > [!NOTE]
 > The file `morciano.py` inside the examples/morciano folder is the main file I worked on for this project, so I suggest to run it to see all the new features implemented.
 ## Improvements
